@@ -41,7 +41,12 @@ public class ShoppingListApp extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new ShoppingListApp();
+                try{
+                    ShoppingListApp test = new ShoppingListApp();
+                    test.setVisible(true);
+                }catch (Exception e ){
+                    e.printStackTrace(System.err);
+                }
             }
         });
     }
