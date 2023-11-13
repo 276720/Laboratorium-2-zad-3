@@ -1,10 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class ShoppingListApp extends JFrame {
-    private DefaultListModel<String> shoppingListModel;
+    private DefaultListModel<String> defaultListModel;
     private JList<String> shoppingList;
     private JTextField productTextField;
     private JButton addButton;
@@ -14,16 +12,16 @@ public class ShoppingListApp extends JFrame {
         super("Lista Zakupów");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        shoppingListModel = new DefaultListModel<>();
-        shoppingList = new JList<>(shoppingListModel);
+        defaultListModel = new DefaultListModel<>();
+        shoppingList = new JList<>(defaultListModel);
         productTextField = new JTextField(20);
         addButton = new JButton("Dodaj");
         removeButton = new JButton("Usuń zaznaczone");
 
-        AddButton addButtonListener = new AddButton(shoppingListModel,productTextField);
+        AddButton addButtonListener = new AddButton(defaultListModel,productTextField);
         addButton.addActionListener(addButtonListener);
 
-        RemoveButton removeButtonListener = new RemoveButton(shoppingList,shoppingListModel);
+        RemoveButton removeButtonListener = new RemoveButton(shoppingList, defaultListModel);
         removeButton.addActionListener(removeButtonListener);
 
         setLayout(new FlowLayout());
